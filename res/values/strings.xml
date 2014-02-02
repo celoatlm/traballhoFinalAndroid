@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Oportunidades UTFPR</string>
+    <string name="action_settings">Configuração</string>
+    <string name="benVindo">Bem Vindo</string>
+    <string name="listaOp">Listar oportunidades</string>
+    <string name="cadastraOp">Cadastrar Oportunidade</string>
+    <string name="hListaOp">Listar todas as Oportunidades</string>
+    <string name="hCadastraOp">Nescessario login para cadastros</string>
+    <string name="sLogar">Logar</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="sUsuario">Usuario:</string>
+    <string name="sSenha">Senha:</string>
+    <string name="shUsuario">nome do usuario</string>
+    <string name="shSenha">senha do usuario</string>
+    <string name="title_activity_cadastra_op">Cadastro de Oportunidade</string>
+    <string name="title_activity_lista_op">Lista Oportunidades</string>
+    <string name="bGravarOportunidade">Gravar</string>
+
+</resources>
