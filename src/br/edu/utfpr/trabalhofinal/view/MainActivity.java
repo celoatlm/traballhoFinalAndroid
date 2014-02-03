@@ -1,20 +1,24 @@
 package br.edu.utfpr.trabalhofinal.view;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import rb.edu.utfpr.trabalhofinal.control.AdapterListVireOportunidade;
 
 import br.edu.utfpr.trabalhofinal.R;
 import br.edu.utfpr.trabalhofinal.bd.OportunidadeDAO;
 import br.edu.utfpr.trabalhofinal.model.Oportunidade;
 import android.os.Bundle;
-import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends ListActivity {
 
 	final static String APP_PREFS = "app_prefs";
 	final static String USER = "username";
@@ -22,32 +26,43 @@ public class MainActivity extends Activity {
 	private SharedPreferences prefs;
 	private OportunidadeDAO oportunidadeDAO;
 //	private MenuItem iLogar;
+	ListView lvOportunidades;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		prefs = getSharedPreferences(APP_PREFS, MODE_PRIVATE);
-		setContentView(R.layout.splash);
+		//setContentView(R.layout.splash);
 		oportunidadeDAO = new OportunidadeDAO(getApplicationContext());
 		
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		setContentView(R.layout.activity_main);
+//		try {
+//			Thread.sleep(3000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		setContentView(R.layout.activity_main);
 //		String user = prefs.getString(USER, null);
 //		iLogar = (MenuItem)findViewById(R.id.iLogar);
 //		if(user != null){
 //			iLogar.setTitle(R.string.sDeslogar);
 //		}
+		ArrayList<String> arrayList = new ArrayList<String>();
+		
 		oportunidadeDAO.open();
+		
+		
 		
 		List<Oportunidade> oportunidades = oportunidadeDAO.getAll();
 		for(Oportunidade op:oportunidades){
+			arrayList.add(op.getCategoria().getDescricao());
 			Log.e("oportunidades",op.getId()+":"+ op.getDescricao()+":"+op.getCategoria().getDescricao()+":"+op.getCurso().getDescricao());
 		}
+		AdapterListVireOportunidade adapter = new AdapterListVireOportunidade(getApplicationContext(), (ArrayList<Oportunidade>) oportunidades);
+//		setListAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,arrayList));
+		setListAdapter(adapter);
+		//lvOportunidades = (ListView)findViewById(R.id.lvOportunidades);
+		lvOportunidades = getListView();
 		
 	}
 	

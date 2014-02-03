@@ -19,7 +19,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/tvCategoria"
+        android:id="@+id/tvLCategoria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tvCurso"
@@ -32,8 +32,8 @@
         android:id="@+id/etSenha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tvCategoria"
-        android:layout_alignBottom="@+id/tvCategoria"
+        android:layout_alignBaseline="@+id/tvLCategoria"
+        android:layout_alignBottom="@+id/tvLCategoria"
         android:layout_alignParentRight="true"
         android:ems="10"
         android:hint="@string/shSenha"
