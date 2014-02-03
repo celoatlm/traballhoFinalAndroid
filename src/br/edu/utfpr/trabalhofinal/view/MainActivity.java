@@ -1,10 +1,16 @@
 package br.edu.utfpr.trabalhofinal.view;
 
+
+import java.util.ArrayList;
+
 import br.edu.utfpr.trabalhofinal.R;
+import br.edu.utfpr.trabalhofinal.bd.OportunidadeDAO;
+import br.edu.utfpr.trabalhofinal.model.Oportunidade;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -14,13 +20,14 @@ public class MainActivity extends Activity {
 	final static String USER = "username";
 
 	private SharedPreferences prefs;
-
+	private OportunidadeDAO oportunidadeDAO;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		prefs = getSharedPreferences(APP_PREFS, MODE_PRIVATE);
 		setContentView(R.layout.splash);
+		oportunidadeDAO = new OportunidadeDAO(getApplicationContext());
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
@@ -28,9 +35,17 @@ public class MainActivity extends Activity {
 			e.printStackTrace();
 		}
 		setContentView(R.layout.activity_main);
+		
+		oportunidadeDAO.open();
 
+		//ArrayList<Oportunidade> oportunidades = (ArrayList<Oportunidade>) oportunidadeDAO.getAll();
+//		for(Oportunidade op:oportunidades){
+//			Log.e("oportunidades", op.getDescricao());
+//		}
 
 	}
+	
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -46,7 +61,7 @@ public class MainActivity extends Activity {
 		String user = prefs.getString(USER, null);
 		
 		if (item.getItemId() == R.id.iLogar) {
-			if(user != null){
+			if(user == null){
 				Intent logar = new Intent(this, LoginActivity.class);
 				startActivity(logar);
 			}

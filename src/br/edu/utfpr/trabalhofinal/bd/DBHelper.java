@@ -40,18 +40,18 @@ public class DBHelper extends SQLiteOpenHelper {
 	 * SQL para criação da tabela de Curso
 	 */
 	private static final String SQL_TABLE_EVENTO_CURSO = "CREATE TABLE " + TABLE_CURSO
-			+ " ( id INTEGER PRIMARY KEY AUTOINCREMENT, descricao TEXT NOT NULL);";
+			+ " ( id INTEGER PRIMARY KEY , descricao TEXT NOT NULL);";
 
 	/**
 	 * SQL para criação da tabela de Categorias
 	 */
 	private static final String SQL_TABLE_CATEGORIA_CREATE = "CREATE TABLE " + TABLE_CATEGORIA
-			+ " ( id INTEGER PRIMARY KEY AUTOINCREMENT, descricao TEXT NOT NULL);";
+			+ " ( id INTEGER PRIMARY KEY , descricao TEXT NOT NULL);";
 	/**
 	 * SQL para criação da tabela de Oportunidades
 	 */
 	private static final String SQL_TABLE_OPORTUNIDADE_CREATE = "CREATE TABLE " + TABLE_OPORTUNIDADE
-			+ "( id INTEGER PRIMARY KEY AUTOINCREMENT, "
+			+ "( id INTEGER PRIMARY KEY , "
 			+ " descricao TEXT NOT NULL,"
 			+ " categoriaId INTEGER NOT NULL, "
 			+ " cursoId INTEGER NOT NULL, "

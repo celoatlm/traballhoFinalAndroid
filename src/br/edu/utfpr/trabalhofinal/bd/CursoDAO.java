@@ -22,6 +22,7 @@ public class CursoDAO extends GenericDAO<Curso> {
 		Cursor cursor = database.rawQuery(sql, null);
 		cursor.moveToFirst();
 		return cursorToObject(cursor);
+		
 	}
 
 	@Override

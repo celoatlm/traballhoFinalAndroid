@@ -9,7 +9,7 @@
     tools:context=".LoginActivity" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tvCurso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -19,11 +19,11 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvCategoria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
+        android:layout_alignLeft="@+id/tvCurso"
+        android:layout_below="@+id/tvCurso"
         android:layout_marginTop="38dp"
         android:text="@string/sSenha"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -32,8 +32,8 @@
         android:id="@+id/etSenha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView2"
-        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignBaseline="@+id/tvCategoria"
+        android:layout_alignBottom="@+id/tvCategoria"
         android:layout_alignParentRight="true"
         android:ems="10"
         android:hint="@string/shSenha"
@@ -43,7 +43,7 @@
         android:id="@+id/etUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignBottom="@+id/tvCurso"
         android:layout_alignLeft="@+id/etSenha"
         android:ems="10"
         android:hint="@string/shUsuario" >

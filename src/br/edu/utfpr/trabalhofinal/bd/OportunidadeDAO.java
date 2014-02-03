@@ -6,6 +6,7 @@ import java.util.List;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.util.Log;
 import br.edu.utfpr.trabalhofinal.model.Oportunidade;
 
 public class OportunidadeDAO extends GenericDAO<Oportunidade> {
@@ -18,8 +19,9 @@ public class OportunidadeDAO extends GenericDAO<Oportunidade> {
 		// TODO Auto-generated constructor stub
 		categoriaDAO = new CategoriaDAO(context);
 		cursoDAO = new CursoDAO(context);
-		this.columns = new String[] { "id", "descrico", "categoriaId",
+		this.columns = new String[] { "id", "descricao", "categoriaId",
 				"cursoId" };
+		
 	}
 
 	@Override
@@ -80,6 +82,10 @@ public class OportunidadeDAO extends GenericDAO<Oportunidade> {
 	@Override
 	protected Oportunidade cursorToObject(Cursor cursor) {
 		// TODO Auto-generated method stub
+		Log.e("cto", cursor.getInt(0)
+				+ cursor.getString(1) 
+				+ categoriaDAO.get(cursor.getInt(2))
+				+ cursoDAO.get(cursor.getInt(3)));
 		Oportunidade oportunidade = new Oportunidade(cursor.getInt(0),
 				cursor.getString(1), categoriaDAO.get(cursor.getInt(2)),
 				cursoDAO.get(cursor.getInt(3)));
@@ -89,7 +95,7 @@ public class OportunidadeDAO extends GenericDAO<Oportunidade> {
 	private ContentValues getContentValues(Oportunidade oportunidade) {
 		ContentValues values = new ContentValues();
 
-		values.put("id", oportunidade.getId());
+		//values.put("id", oportunidade.getId());
 		values.put("descricao", oportunidade.getDescricao());
 		values.put("categoriaId", oportunidade.getCategoria().getId());
 		values.put("cursoId", oportunidade.getCurso().getId());

@@ -19,6 +19,7 @@ public abstract class GenericDAO <T> {
 	//Pega uma referência para o DB
 	public void open() throws SQLException {
 		database = sqliteOpenHelper.getWritableDatabase();
+		//sqliteOpenHelper.onUpgrade(database, 1,2);
 	}
 
 	public void close() {
@@ -30,9 +31,9 @@ public abstract class GenericDAO <T> {
 
 		Cursor cursor = database.query(tabela, colunas, expressao, null, null, null, null);
 		
-		if(cursor.getCount() == 0)
+		if(cursor.getCount() == 0){
 			return null;
-		
+		}
 		cursor.moveToFirst();
 		return cursorToObject(cursor);
 	}

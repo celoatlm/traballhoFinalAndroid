@@ -12,6 +12,7 @@ import br.edu.utfpr.trabalhofinal.model.Curso;
 import br.edu.utfpr.trabalhofinal.model.Oportunidade;
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -73,10 +74,12 @@ public class CadastraOpActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				oportunidadeDAO.create(new Oportunidade(0, etDescricao
+				Oportunidade op = new Oportunidade(null, etDescricao
 						.getText().toString(), mapCategorias.get((String) sCategoria.getSelectedItem()),
-						mapCursos.get((String) sCurso.getSelectedItem())));
-//				Categoria ca = mapCategorias.get((String) sCategoria.getSelectedItem());
+						mapCursos.get((String) sCurso.getSelectedItem()));
+				oportunidadeDAO.create(op);
+				finish();
+				Log.e("cop", op.getId()+":"+op.getDescricao()+":"+op.getCategoria().getId()+":"+op.getCurso().getId());
 //				Curso cu = mapCursos.get((String) sCurso.getSelectedItem());
 //				Log.e("spinner", (String) sCategoria.getSelectedItem()+":"+ca.getId()+":"+ca.getDescricao());
 //				Log.e("spinner", (String) sCurso.getSelectedItem()+":"+cu.getId()+":"+cu.getDescricao());
