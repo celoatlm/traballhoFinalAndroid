@@ -14,12 +14,13 @@ public abstract class GenericDAO <T> {
  
 	public GenericDAO(Context context) {
 		sqliteOpenHelper = new DBHelper(context);
+		
 	}
 	
 	//Pega uma referência para o DB
 	public void open() throws SQLException {
 		database = sqliteOpenHelper.getWritableDatabase();
-		//sqliteOpenHelper.onUpgrade(database, 1,2);
+		
 	}
 
 	public void close() {

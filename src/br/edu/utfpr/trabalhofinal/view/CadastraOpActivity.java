@@ -78,8 +78,8 @@ public class CadastraOpActivity extends Activity {
 						.getText().toString(), mapCategorias.get((String) sCategoria.getSelectedItem()),
 						mapCursos.get((String) sCurso.getSelectedItem()));
 				oportunidadeDAO.create(op);
-				finish();
 				Log.e("cop", op.getId()+":"+op.getDescricao()+":"+op.getCategoria().getId()+":"+op.getCurso().getId());
+				finish();
 //				Curso cu = mapCursos.get((String) sCurso.getSelectedItem());
 //				Log.e("spinner", (String) sCategoria.getSelectedItem()+":"+ca.getId()+":"+ca.getDescricao());
 //				Log.e("spinner", (String) sCurso.getSelectedItem()+":"+cu.getId()+":"+cu.getDescricao());

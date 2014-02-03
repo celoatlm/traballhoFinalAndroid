@@ -18,5 +18,7 @@
     <string name="title_activity_cadastra_op">Cadastro de Oportunidade</string>
     <string name="title_activity_lista_op">Lista Oportunidades</string>
     <string name="bGravarOportunidade">Gravar</string>
+    <string name="sDeslogar">Deslogar</string>
+    <string name="title_activity_list">ListActivity</string>
 
 </resources>

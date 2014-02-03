@@ -18,9 +18,13 @@ public class OportunidadeDAO extends GenericDAO<Oportunidade> {
 		super(context);
 		// TODO Auto-generated constructor stub
 		categoriaDAO = new CategoriaDAO(context);
+		categoriaDAO.open();
+		
 		cursoDAO = new CursoDAO(context);
-		this.columns = new String[] { "id", "descricao", "categoriaId",
+		cursoDAO.open();
+		this.columns = new String[] {"id","descricao", "categoriaId",
 				"cursoId" };
+		
 		
 	}
 
@@ -84,8 +88,8 @@ public class OportunidadeDAO extends GenericDAO<Oportunidade> {
 		// TODO Auto-generated method stub
 		Log.e("cto", cursor.getInt(0)
 				+ cursor.getString(1) 
-				+ categoriaDAO.get(cursor.getInt(2))
-				+ cursoDAO.get(cursor.getInt(3)));
+				+ categoriaDAO.get(cursor.getInt(2)).getDescricao()
+				+ cursoDAO.get(cursor.getInt(3)).getDescricao());
 		Oportunidade oportunidade = new Oportunidade(cursor.getInt(0),
 				cursor.getString(1), categoriaDAO.get(cursor.getInt(2)),
 				cursoDAO.get(cursor.getInt(3)));
@@ -99,7 +103,7 @@ public class OportunidadeDAO extends GenericDAO<Oportunidade> {
 		values.put("descricao", oportunidade.getDescricao());
 		values.put("categoriaId", oportunidade.getCategoria().getId());
 		values.put("cursoId", oportunidade.getCurso().getId());
-
+		Log.e("gcv", values.get("descricao")+":"+values.get("categoriaId")+":"+values.get("cursoId"));
 		return values;
 	}
 
