@@ -43,6 +43,10 @@
             android:name="br.edu.utfpr.trabalhofinal.ListaOpActivity"
             android:label="@string/title_activity_list" >
         </activity>
+        <activity
+            android:name="br.edu.utfpr.trabalhofinal.view.FiltroCategoriaActivity"
+            android:label="@string/title_activity_filtro_categoria" >
+        </activity>
     </application>
 
 </manifest>

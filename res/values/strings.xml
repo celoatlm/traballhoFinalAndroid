@@ -20,5 +20,8 @@
     <string name="bGravarOportunidade">Gravar</string>
     <string name="sDeslogar">Deslogar</string>
     <string name="title_activity_list">ListActivity</string>
+    <string name="sFiltroCategoria">Filtra Categoria</string>
+    <string name="title_activity_filtro_categoria">FiltroCategoriaActivity</string>
+    <string name="sFiltroCurso">Filtra Curso</string>
 
 </resources>
