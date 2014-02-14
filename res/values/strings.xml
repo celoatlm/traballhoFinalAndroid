@@ -23,5 +23,15 @@
     <string name="sFiltroCategoria">Filtra Categoria</string>
     <string name="title_activity_filtro_categoria">FiltroCategoriaActivity</string>
     <string name="sFiltroCurso">Filtra Curso</string>
+    <string name="title_activity_ver_op">VerOpActivity</string>
+    <string name="sBADEditar">Editar</string>
+    <string name="sBADVisualizar">Vizualizar</string>
+    <string name="sCancel">Cancelar</string>
+    <string name="sLoginCerto">Usuario Logado</string>
+    <string name="sLoginErrado">User ou Senhas Errados</string>
+    <string name="sExtra">Extra</string>
+    <string name="sGPS">GPS</string>
+    <string name="title_activity_gps">GPSActivity</string>
+    <string name="sGPSFalha">GPS Desligado</string>
 
 </resources>

@@ -20,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class CadastraOpActivity extends Activity {
 
@@ -68,21 +69,29 @@ public class CadastraOpActivity extends Activity {
 			mapCursos.put(c.getDescricao(), c);
 		}
 		sCurso.setAdapter(arrayAdapterCurso);
-	
+		
+		final Bundle b = new Bundle();
+		Oportunidade op = (Oportunidade)b.get("oportunidade");
+		if(op != null){
+			setOportunidadeLabels(op);
+		}
+		
+		
 		bGravarOportunidade.setOnClickListener(new OnClickListener() {
 			
+			@SuppressWarnings("unused")
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Oportunidade op = new Oportunidade(null, etDescricao
-						.getText().toString(), mapCategorias.get((String) sCategoria.getSelectedItem()),
-						mapCursos.get((String) sCurso.getSelectedItem()));
-				oportunidadeDAO.create(op);
-				Log.e("cop", op.getId()+":"+op.getDescricao()+":"+op.getCategoria().getId()+":"+op.getCurso().getId());
+				
+				if(b == null){
+					oportunidadeDAO.create(getOportunidadeLabels());
+				}else{
+					oportunidadeDAO.update(getOportunidadeLabels());
+				}
+				Toast.makeText(getApplicationContext(), "Oportunidade Cadastrada", Toast.LENGTH_SHORT).show();
 				finish();
-//				Curso cu = mapCursos.get((String) sCurso.getSelectedItem());
-//				Log.e("spinner", (String) sCategoria.getSelectedItem()+":"+ca.getId()+":"+ca.getDescricao());
-//				Log.e("spinner", (String) sCurso.getSelectedItem()+":"+cu.getId()+":"+cu.getDescricao());
+
 			}
 		});
 		
@@ -93,6 +102,19 @@ public class CadastraOpActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.cadastra_op, menu);
 		return true;
+	}
+	
+	private void setOportunidadeLabels(Oportunidade op){
+		
+		sCategoria.setSelection(op.getCategoria().getId());
+		sCurso.setSelection(op.getCurso().getId());
+		etDescricao.setText(op.getDescricao());
+	}
+	private Oportunidade getOportunidadeLabels(){
+		Oportunidade op = new Oportunidade(null, etDescricao
+				.getText().toString(), mapCategorias.get((String) sCategoria.getSelectedItem()),
+				mapCursos.get((String) sCurso.getSelectedItem()));
+		return op;
 	}
 
 }

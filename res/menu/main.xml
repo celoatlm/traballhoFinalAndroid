@@ -3,4 +3,9 @@
 	<item android:id="@+id/iCadastrarOp" android:showAsAction="collapseActionView" android:title="@string/cadastraOp"></item>
 	<item android:id="@+id/iFiltroCategoria" android:showAsAction="collapseActionView" android:title="@string/sFiltroCategoria"></item>
 	<item android:id="@+id/iFiltroCurso" android:showAsAction="collapseActionView" android:title="@string/sFiltroCurso"></item>
+	<item android:id="@+id/iExtra" android:title="@string/sExtra" android:showAsAction="collapseActionView">
+		<menu>
+			<item android:id="@+id/iGPS" android:title="@string/sGPS" android:showAsAction="collapseActionView"/>
+		</menu>
+	</item>
 </menu>

@@ -6,7 +6,6 @@ import java.util.List;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.util.Log;
 import br.edu.utfpr.trabalhofinal.model.Oportunidade;
 
 public class OportunidadeDAO extends GenericDAO<Oportunidade> {
@@ -86,10 +85,7 @@ public class OportunidadeDAO extends GenericDAO<Oportunidade> {
 	@Override
 	protected Oportunidade cursorToObject(Cursor cursor) {
 		// TODO Auto-generated method stub
-		Log.e("cto", cursor.getInt(0)
-				+ cursor.getString(1) 
-				+ categoriaDAO.get(cursor.getInt(2)).getDescricao()
-				+ cursoDAO.get(cursor.getInt(3)).getDescricao());
+		
 		Oportunidade oportunidade = new Oportunidade(cursor.getInt(0),
 				cursor.getString(1), categoriaDAO.get(cursor.getInt(2)),
 				cursoDAO.get(cursor.getInt(3)));
@@ -103,7 +99,7 @@ public class OportunidadeDAO extends GenericDAO<Oportunidade> {
 		values.put("descricao", oportunidade.getDescricao());
 		values.put("categoriaId", oportunidade.getCategoria().getId());
 		values.put("cursoId", oportunidade.getCurso().getId());
-		Log.e("gcv", values.get("descricao")+":"+values.get("categoriaId")+":"+values.get("cursoId"));
+		
 		return values;
 	}
 
