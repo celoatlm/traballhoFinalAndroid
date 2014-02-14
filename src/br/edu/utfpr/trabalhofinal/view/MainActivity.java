@@ -8,6 +8,7 @@ import rb.edu.utfpr.trabalhofinal.control.AdapterListVireOportunidade;
 import rb.edu.utfpr.trabalhofinal.control.AdpterListViewCategoriaFiltro;
 import rb.edu.utfpr.trabalhofinal.control.AdpterListViewCursoFiltro;
 
+import br.edu.utfpr.trabalhofinal.AcelerometroActivity;
 import br.edu.utfpr.trabalhofinal.R;
 import br.edu.utfpr.trabalhofinal.bd.CategoriaDAO;
 import br.edu.utfpr.trabalhofinal.bd.CursoDAO;
@@ -15,17 +16,11 @@ import br.edu.utfpr.trabalhofinal.bd.OportunidadeDAO;
 import br.edu.utfpr.trabalhofinal.model.Categoria;
 import br.edu.utfpr.trabalhofinal.model.Curso;
 import br.edu.utfpr.trabalhofinal.model.Oportunidade;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -33,7 +28,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class MainActivity extends ListActivity {
 
@@ -48,8 +42,7 @@ public class MainActivity extends ListActivity {
 	private ArrayList<String> sCursos;
 	private Map<String, Boolean> mapStringCurso;
 	private Map<String, Boolean> mapStringCategoria;
-	private LocationManager locationManager;
-	private LocationListener locationListener; 
+
 	// private MenuItem iLogar;
 	// ListView lvOportunidades;
 
@@ -293,60 +286,24 @@ public class MainActivity extends ListActivity {
 
 		}
 		if (item.getItemId() == R.id.iGPS) {
-				getLocation();
-				
+			Intent i = new Intent(getApplicationContext(), GPSActivity.class);
+			startActivity(i);
+
+		}
+		if (item.getItemId() == R.id.iAcelerometro) {
+			Intent i = new Intent(getApplicationContext(),
+					AcelerometroActivity.class);
+			startActivity(i);
+		}
+		if (item.getItemId() == R.id.iCamera) {
+			
+		}
+		if(item.getItemId() == R.id.iLink){
+			
 		}
 		return super.onOptionsItemSelected(item);
 	}
 
-	private void getLocation() {
-		// TODO Auto-generated method stub
-
-		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		
-		locationListener = new LocationListener() {
-
-			@Override
-			public void onStatusChanged(String arg0, int arg1, Bundle arg2) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void onProviderEnabled(String arg0) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void onProviderDisabled(String arg0) {
-				// TODO Auto-generated method stub
-				Toast.makeText(getApplicationContext(), R.string.sGPSFalha,
-						Toast.LENGTH_SHORT).show();
-				Intent intent = new Intent(
-						Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-				startActivityForResult(intent, 1);
-			}
-
-			@Override
-			public void onLocationChanged(Location location) {
-				// TODO Auto-generated method stub
-				Toast.makeText(getApplicationContext(), "mudo",
-						Toast.LENGTH_SHORT).show();
-
-			}
-		};
-		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,
-				0, locationListener);
-
-	}
-
-	@Override
-	protected void onDestroy() {
-		// TODO Auto-generated method stub
-		locationManager.removeUpdates(locationListener);
-		super.onDestroy();
-	}
 	// @Override
 	// protected void onResume() {
 	// // TODO Auto-generated method stub

@@ -6,6 +6,9 @@
 	<item android:id="@+id/iExtra" android:title="@string/sExtra" android:showAsAction="collapseActionView">
 		<menu>
 			<item android:id="@+id/iGPS" android:title="@string/sGPS" android:showAsAction="collapseActionView"/>
+			<item android:id="@+id/iAcelerometro" android:showAsAction="collapseActionView" android:title="@string/sAcelerometro"/>
+			<item android:id="@+id/iLink" android:title="@string/sLink" android:showAsAction="collapseActionView"/>
+			<item android:id="@+id/iCamera" android:title="@string/sCamera"/>
 		</menu>
 	</item>
 </menu>

@@ -33,5 +33,11 @@
     <string name="sGPS">GPS</string>
     <string name="title_activity_gps">GPSActivity</string>
     <string name="sGPSFalha">GPS Desligado</string>
+    <string name="title_activity_acelerometro">AcelerometroActivity</string>
+    <string name="sAcelerometro">Acelerometro</string>
+    <string name="sLatitude">Latitude:</string>
+    <string name="sLongitude">Longitude:</string>
+    <string name="sCamera">Camera</string>
+    <string name="sLink">Link</string>
 
 </resources>
